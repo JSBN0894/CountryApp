@@ -12,6 +12,5 @@ data class CountriesItem(
     val subregion: String,
     val population: Int,
     val continents: List<String>,
-    //val languages: Languages,
     val flags: Flags
 )
