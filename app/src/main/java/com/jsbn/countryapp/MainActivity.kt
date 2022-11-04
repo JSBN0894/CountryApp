@@ -1,16 +1,12 @@
 package com.jsbn.countryapp
-
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-
+import com.jsbn.countryapp.adapter.ItemAdapter
 import com.jsbn.countryapp.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.Call
-import okhttp3.Response
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -18,26 +14,50 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getCountriesInfo()
+        //Run MainActivity
+        init()
+
+
     }
 
-
-    private fun getCountriesInfo(){
+    private fun init(){
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val call = CountryApi.retrofitService.getCountry()
                 val countriesInfo = call.body()
                 runOnUiThread{
-                    binding.textView.text = countriesInfo?.get(0)?.name?.official.toString()
+                    if (countriesInfo != null) {
+                        val recyclerView = binding.recyclerView
+                        recyclerView.adapter = ItemAdapter(binding.searchView.context,countriesInfo)
+                        binding.searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+                            override fun onQueryTextSubmit(p0: String?): Boolean {
+                                return false
+                            }
+
+                            override fun onQueryTextChange(p0: String?): Boolean {
+                                recyclerView.adapter =
+                                    p0?.let { filterCountriesByName(it,countriesInfo) }?.let {
+                                        ItemAdapter(binding.searchView.context,
+                                            it
+                                        )
+                                    }
+                                return true
+                            }
+
+                        })
+
+                    }
                 }
             }catch (e : Exception){
-                binding.textView.text = "Error de conexión"
-
+                //pass
             }
-
         }
     }
 
+    fun filterCountriesByName(query:String,list:List<CountriesItem>): List<CountriesItem> {
+        return list.filter{ it.name.official?.lowercase()?.contains(query.lowercase()) ?: false}
+    }
 }
+
 
 
