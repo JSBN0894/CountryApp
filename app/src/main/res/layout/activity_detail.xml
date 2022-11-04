@@ -1,9 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_flag"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="30dp"
+        android:background="@color/Grey_200"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tableLayout">
+        <ImageView
+            android:id="@+id/flag_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            tools:layout_width="match_parent"
+            tools:layout_height="200dp"
+            tools:background="@color/black"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TableLayout
+        android:textAlignment="center"
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cardView_flag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp">
+
+        <TableRow>
+
+            <TextView
+                android:textAlignment="center"
+                android:text="Name"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:padding="5dp" />
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:id="@+id/name_val"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                tools:text="Colombia"
+                android:padding="5dp" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:textAlignment="center"
+                android:text="Capital"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:padding="5dp" />
+
+            <TextView
+                android:textAlignment="center"
+
+                android:id="@+id/capital_val"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                tools:text="Bogotá"
+                android:padding="5dp" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:textAlignment="center"
+                android:text="Region"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:padding="5dp" />
+
+            <TextView
+                android:textAlignment="center"
+
+                android:id="@+id/region_val"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                tools:text="blabla"
+                android:padding="5dp" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:textAlignment="center"
+
+                android:text="Subregion"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:padding="5dp" />
+
+            <TextView
+                android:textAlignment="center"
+                android:id="@+id/subregion_val"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                tools:text="blabla"
+                android:padding="5dp" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:textAlignment="center"
+                android:text="Population"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:padding="5dp" />
+
+            <TextView
+                android:textAlignment="center"
+                android:id="@+id/population_val"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                tools:text="blabla"
+                android:padding="5dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:textAlignment="center"
+                android:text="Continents"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:padding="5dp" />
+
+            <TextView
+                android:textAlignment="center"
+                android:id="@+id/continents_val"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                tools:text="blabla"
+                android:padding="5dp" />
+        </TableRow>
+
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

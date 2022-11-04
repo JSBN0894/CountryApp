@@ -7,11 +7,11 @@ import Maps
 data class CountriesItem(
     val name:Nameclass,
     val capital: List<String>?,
-    val flag: String,
     val latlng: List<Double>,
+    val region: String,
+    val subregion: String,
+    val population: Int,
+    val continents: List<String>,
     //val languages: Languages,
-    val flags: Flags,
-    val maps: Maps,
-
-
+    val flags: Flags
 )

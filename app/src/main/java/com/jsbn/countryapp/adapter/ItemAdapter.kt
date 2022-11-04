@@ -1,14 +1,17 @@
 
 package com.jsbn.countryapp.adapter
-import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jsbn.countryapp.CountriesItem
+import com.jsbn.countryapp.DetailActivity
 import com.jsbn.countryapp.R
 
 class ItemAdapter(
@@ -39,11 +42,20 @@ class ItemAdapter(
         holder.name.text = item.name.official
         holder.capital.text = item.capital?.get(0) ?: "Nan"
         Glide.with(context).load(item.flags.png).into(holder.flag)
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun refresh(){
-        notifyDataSetChanged()
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context,DetailActivity::class.java)
+            val listData = arrayListOf(
+                item.flags.png,
+                item.name.official,
+                item.capital?.get(0) ?: "Don't have capital",
+                item.region,
+                item.subregion,
+                item.population.toString(),
+                item.continents[0]
+            )
+            intent.putExtra("INTENT_DATA",listData)
+            startActivity(context,intent,null)
+        }
     }
 
     override fun getItemCount() = dataset.size

@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         //Run MainActivity
         init()
-
-
     }
 
     private fun init(){
@@ -57,6 +55,7 @@ class MainActivity : AppCompatActivity() {
     fun filterCountriesByName(query:String,list:List<CountriesItem>): List<CountriesItem> {
         return list.filter{ it.name.official?.lowercase()?.contains(query.lowercase()) ?: false}
     }
+
 }
 
 
