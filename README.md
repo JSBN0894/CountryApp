@@ -41,3 +41,9 @@ Para realizar la conexión a la API fue necesario crear los siguientes archivos:
  1. **ApiServices.kt**: es una interfaz que se encarga de hacer las peticiones  HTTP GET  a la URL del proyecto
  2. **CountriesItem.kt**: es una **data class** en la cual definimos la misma estructura que tendrá la respuesta a la petición HTTP GET, algunos atributos de esta clase son objetos de otras clases, las cuales
 representan el modelo de datos.
+
+![image](https://github.com/JSBN0894/CountryApp/blob/master/Screenshots/Recycler%20View.jpeg)
+![image](https://github.com/JSBN0894/CountryApp/blob/master/Screenshots/Fitered%20List.jpeg)
+![image](https://github.com/JSBN0894/CountryApp/blob/master/Screenshots/DetailScreen.jpeg)
+
+
